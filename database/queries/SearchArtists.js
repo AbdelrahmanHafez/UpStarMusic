@@ -13,7 +13,6 @@ const buildQuery = (criteria) => {
   let query = {};
 
   if (criteria.name) {
-    // query.name = criteria.name;
     query.$text = { $search: criteria.name };
   }
 

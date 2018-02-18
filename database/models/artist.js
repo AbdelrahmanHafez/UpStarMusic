@@ -16,5 +16,6 @@ const artistSchema = new Schema({
   timestamps: true
 });
 
+artistSchema.index({ name: 'text' });
 
 module.exports = mongoose.model('Artist', artistSchema);
