@@ -33,10 +33,11 @@ const buildQuery = (criteria) => {
   return query;
 }
 
-module.exports = (criteria, sortProperty, offset = 0, limit = 20) => {
+module.exports = (criteria, sortProperty, offset = 0, limit = 10) => {
   let query = buildQuery(criteria);
   let artists = Artist.find(query).sort(sortProperty).skip(offset).limit(limit);
   let count = Artist.count(query);
+
   return Promise.all([artists, count])
     .then(results => {
       return { all: results[0], count: results[1], offset, limit }
